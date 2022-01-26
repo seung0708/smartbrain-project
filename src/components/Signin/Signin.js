@@ -6,7 +6,7 @@ const Signin = ({onRouteChange}) => {
     return(
         <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
             <main className="pa4 black-80">
-                <form className="measure center">
+                <form className="measure">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                         <legend className="f4 fw6 ph0 mh0">Sign In</legend>
                         <div className="mt3">
@@ -26,7 +26,7 @@ const Signin = ({onRouteChange}) => {
                             type="submit" 
                             value="Sign in" />
                     </div>
-                    <div className="lh-copy mt3 center">
+                    <div className="lh-copy mt3">
                         <input onClick={() => onRouteChange('register')} className="center f6 link dim black db" type='submit' value="Sign up"/>
                         <a href="#0" className="f6 link dim black db">Forgot your password?</a>
                     </div>
