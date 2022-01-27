@@ -1,8 +1,19 @@
+/*
+    / --> res = this is working
+    /signin --> POST = success/fail
+    /register --> POST = user
+    /profile/:userId --> GET
+    /image --> PUT = user
+
+*/ 
+
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const bcrypt = require('bcrypt');
+const cors = require('cors');
 const app = express();
 
+app.use(cors())
 app.use(bodyParser.json())
 
 const database = {
@@ -10,16 +21,16 @@ const database = {
         {
             id: '123',
             name: 'John',
-            email: 'john@gmail.com',
             password: 'cookies',
+            email: 'john@gmail.com',
             entries: 0,
             joined: new Date()
         },
         {
             id: '124',
             name: 'Sally',
-            email: 'sally@gmail.com',
             password: 'bananas',
+            email: 'sally@gmail.com',
             entries: 0,
             joined: new Date()
         }
@@ -40,6 +51,7 @@ app.post('/signin', (req, res) => {
 
 app.post('/register', (req, res) => {
     const {email, name, password} = req.body;
+   
     database.users.push({
         id: '125',
         name,
@@ -85,11 +97,13 @@ app.listen(3000, () => {
     console.log('app is running on port 3000')
 })
 
-/*
-    / --> res = this is working
-    /signin --> POST = success/fail
-    /register --> POST = user
-    /profile/:userId --> GET
-    /image --> PUT = user
+// bcrypt.hash(password, null, function(err, hash) {
+//     // Store hash in your password DB.
+// });
 
-*/ 
+// bcrypt.compare(myPlaintextPassword, hash, function(err, result) {
+//     // result == true
+// });
+// bcrypt.compare(someOtherPlaintextPassword, hash, function(err, result) {
+//     // result == false
+// });
